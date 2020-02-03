@@ -52,10 +52,6 @@ namespace NRediSearch
 
         public sealed class ConfiguredIndexOptions
         {
-            // This news up a enum which results in the 0 equivalent.
-            // It's not used in the library and I'm guessing this isn't intentional.
-            public static IndexOptions Default => new IndexOptions();
-
             private IndexOptions _options;
             private string[] _stopwords;
             public ConfiguredIndexOptions(IndexOptions options = IndexOptions.Default)
