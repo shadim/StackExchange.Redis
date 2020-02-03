@@ -903,6 +903,5 @@ namespace StackExchange.Redis.KeyspaceIsolation
         {
             return Inner.KeyTouch(ToInner(keys), flags);
         }
-
     }
 }
