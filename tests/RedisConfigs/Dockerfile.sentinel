@@ -1,0 +1,14 @@
+FROM redis:5-alpine
+
+COPY Sentinel /data/Sentinel/
+RUN chown -R redis:redis /data
+
+COPY Docker.sentinel/docker-entrypoint.sh /usr/local/bin/
+
+RUN apk add --update supervisor && rm  -rf /tmp/* /var/cache/apk/*
+
+ADD Docker.sentinel/supervisord.conf /etc/
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+EXPOSE 7010 7011 26379 26380 26381

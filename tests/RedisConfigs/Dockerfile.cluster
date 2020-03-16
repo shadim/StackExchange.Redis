@@ -1,0 +1,14 @@
+FROM redis:5-alpine
+
+COPY Cluster /data/Cluster/
+RUN chown -R redis:redis /data
+
+COPY Docker.cluster/docker-entrypoint.sh /usr/local/bin/
+
+RUN apk add --update supervisor && rm  -rf /tmp/* /var/cache/apk/*
+
+ADD Docker.cluster/supervisord.conf /etc/
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+EXPOSE 7000 7001 7002 7003 7004 7005

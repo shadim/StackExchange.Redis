@@ -1,5 +1,6 @@
 INDENT='   '
 echo "Starting Redis servers for testing..."
+mkdir Temp
 
 #Basic Servers
 echo "Starting Basic: 6379-6382"

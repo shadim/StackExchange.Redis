@@ -5,9 +5,20 @@ services:
     build:
       context: .
     image: stackexchange/redis-tests:latest
-    volumes:
-      - ~/Temp:/data/Temp
     ports:
       - 6379-6383:6379-6383
-      - 7000-7011:7000-7011
+  redis-cluster:
+    build:
+      context: .
+      dockerfile: Dockerfile.cluster
+    image: stackexchange/redis-tests-cluster:latest
+    ports:
+      - 7000-7006:7000-7006
+  redis-sentinel:
+    build:
+      context: .
+      dockerfile: Dockerfile.sentinel
+    image: stackexchange/redis-tests-sentinel:latest
+    ports:
+      - 7010-7011:7010-7011
       - 26379-26381:26379-26381
